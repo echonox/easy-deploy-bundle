@@ -222,6 +222,8 @@ In addition to those, the default deployer adds the following hooks:
     warming up the cache and optimizing Composer.
   * `public function beforePublishing()`, executed just before changing the
     symlink to the new release.
+  * `public function afterPublishing()`, executed just after changing the
+    symlink to the new release.
   * `public function beforeRollingBack()`, executed just before starting the
     roll back process.
 
