@@ -193,7 +193,7 @@ directories defined as "writable":
   * `->keepReleases(int $numReleases = 5)` (the number of past releases to keep
     when deploying a new version; if you want to roll back, this must be higher
     than `1`)
-  * `->resetOpCacheFor(string $homepageUrl)` (if you use OPcache, you must reset
+  * `->resetOpCacheFor(string $homepageUrl, bool $verifyCerts = true)` (if you use OPcache, you must reset
     it after each new deploy; however, you can't reset the OPcache contents from
     the command line; EasyDeploy uses a smart trick to reset the cache, but it
     needs to know the URL of the homepage of your application; e.g. `https://symfony.com`)

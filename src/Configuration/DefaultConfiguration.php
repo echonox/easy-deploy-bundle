@@ -348,13 +348,14 @@ final class DefaultConfiguration extends AbstractConfiguration
 
     // the $homepageUrl (e.g. 'https://symfony.com') is needed because OPcache contents can't
     // be deleted from the terminal and deployer must make a HTTP request to a real website URL
-    public function resetOpCacheFor(string $homepageUrl): self
+    public function resetOpCacheFor(string $homepageUrl, bool $verifyCerts = true): self
     {
         if (!Str::startsWith($homepageUrl, 'http')) {
             throw new InvalidConfigurationException(sprintf('The value of %s option must be the valid URL of your homepage (it must start with http:// or https://).', Option::resetOpCacheFor));
         }
 
         $this->resetOpCacheFor = rtrim($homepageUrl, '/');
+        $this->verifyCerts = $verifyCerts;
 
         return $this;
     }

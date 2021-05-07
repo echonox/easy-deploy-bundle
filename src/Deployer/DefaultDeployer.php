@@ -414,7 +414,7 @@ abstract class DefaultDeployer extends AbstractDeployer
 
         $this->log('<h2>Resetting the OPcache contents</>');
         $phpScriptPath = sprintf('__easy_deploy_opcache_reset_%s.php', bin2hex(random_bytes(8)));
-        $this->runRemote(sprintf('echo "<?php opcache_reset();" > {{ web_dir }}/%s && wget %s/%s && rm -f {{ web_dir }}/%s', $phpScriptPath, $homepageUrl, $phpScriptPath, $phpScriptPath));
+        $this->runRemote(sprintf('echo "<?php opcache_reset();" > {{ web_dir }}/%s && wget ' . ($this->getConfig(Option::verifyCerts) ? '' : '--no-check-certificate') . ' %s/%s && rm -f {{ web_dir }}/%s', $phpScriptPath, $homepageUrl, $phpScriptPath, $phpScriptPath));
     }
 
     private function doKeepReleases(): void
